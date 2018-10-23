@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import './styles.css';
+import styles from './styles.css';
 
-export default class Goodbye extends Component {
+class Goodbye extends Component {
     render() {
         return (
-            <div>
+            <div className={styles.Wrapper}>
                 <h2>
                     Bye, see you soon <span role="img" aria-label="emoji">🔖</span>
                 </h2>
@@ -13,3 +13,5 @@ export default class Goodbye extends Component {
         )
     }
 }
+
+export default  Goodbye;
