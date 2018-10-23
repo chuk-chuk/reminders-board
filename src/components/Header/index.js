@@ -1,15 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import './styles.css';
+import Logo from '../Logo';
 
-class Header extends Component {
-  render() {
-    return (
-      <div className="Header">
-        I am header
-      </div>
-    );
-  }
-}
+import styles from './styles.css';
+
+const Header = () => {
+  const title = 'Reminder Board';
+
+  return (
+      <header className={styles.Header} aria-label="main header">
+          <div className={styles.Header__logo}>
+              <Logo />
+          </div>
+
+          <div className={styles.Header__title}>
+              {title}
+          </div>
+      </header>
+  );
+};
 
 export default Header;

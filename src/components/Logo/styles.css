@@ -1,0 +1,12 @@
+.Logo {
+    display: inline-block;
+    width: 100%;
+    max-width: 280px;
+}
+
+.Logo__image {
+    width: auto;
+    height: 43px;
+    max-width: 100%;
+    vertical-align: middle;
+}
