@@ -1,20 +1,42 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import './styles.css';
+import Loader from '../components/Loader';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+class ReminderApp extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: true
+    }
+  }
 
-class Application extends Component {
+  componentDidMount() {
+    this.setState({
+      loading: false
+    });
+  }
+
   render() {
+    const { children } = this.props;
+    const { loading } = this.state;
+    
     return (
-      <div className="Application">
-        <header className="Application-header">
-          <img src="https://is3-ssl.mzstatic.com/image/thumb/Purple111/v4/f3/1a/37/f31a3705-2930-81ea-7267-e4ad36118ccb/source/256x256bb.jpg" alt="logo" />
-          <p>
-            The little book of abuse.
-          </p>
-        </header>
-      </div>
+      <Loader loading={loading}>
+        <Header />
+          <main>
+          {children}
+          </main>
+        <Footer />
+      </Loader>
     );
   }
 }
 
-export default Application;
+ReminderApp.propTypes = {
+  children: PropTypes.node,
+  loading: PropTypes.bool
+};
+
+export default ReminderApp;
