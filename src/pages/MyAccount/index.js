@@ -11,7 +11,7 @@ class MyAccount extends Component {
         return (
             <div className={styles.MyAccount}>
                 <h2>
-                    What do you want to pin a message Dear Mr/Mrs name?
+                    Do you want to pin a message Dear Mr/Mrs name?
                     <Button id='myAccountButton' label={label} onClick={this.handleClick}/>
                 </h2>
             </div>
