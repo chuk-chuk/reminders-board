@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import ReminderApp from './Application';
 import Welcome from './pages/Welcome';
@@ -9,11 +9,13 @@ import MyAccount from './pages/MyAccount';
 const Routes = () => {
     return (
         <ReminderApp>
-            <Switch>
-                <Route exact path="/" component={Welcome} />
-                <Route path="/account" component={MyAccount} />
-                <Route path="/goodbye" component={Goodbye} />
-            </Switch>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/" component={Welcome} />
+                    <Route path="/account" component={MyAccount} />
+                    <Route path="/goodbye" component={Goodbye} />
+                </Switch>
+            </BrowserRouter>
         </ReminderApp>
     )
 }

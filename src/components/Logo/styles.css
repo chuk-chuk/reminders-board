@@ -5,8 +5,12 @@
 }
 
 .Logo__image {
-    width: auto;
+    width: 15%;
     height: 43px;
     max-width: 100%;
     vertical-align: middle;
+}
+
+.Loader__text {
+    float: right;
 }

@@ -13,9 +13,11 @@ class ReminderApp extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      loading: false
-    });
+    setTimeout(() => {
+      this.setState({
+        loading: false
+      })
+    }, 500);
   }
 
   render() {
@@ -35,8 +37,7 @@ class ReminderApp extends Component {
 }
 
 ReminderApp.propTypes = {
-  children: PropTypes.node,
-  loading: PropTypes.bool
+  children: PropTypes.node
 };
 
 export default ReminderApp;

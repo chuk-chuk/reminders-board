@@ -5,7 +5,7 @@ import Logo from '../Logo';
 import styles from './styles.css';
 
 const Header = () => {
-  const title = 'Reminder Board';
+  const title = 'Reminder Board Header';
 
   return (
       <header className={styles.Header} aria-label="main header">
