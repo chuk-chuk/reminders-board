@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Loader from '../components/Loader';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 class ReminderApp extends Component {
   constructor() {
@@ -17,7 +16,7 @@ class ReminderApp extends Component {
       this.setState({
         loading: false
       })
-    }, 500);
+    }, 250);
   }
 
   render() {
@@ -26,7 +25,6 @@ class ReminderApp extends Component {
     
     return (
       <Loader loading={loading}>
-        <Header />
           <main>
           {children}
           </main>

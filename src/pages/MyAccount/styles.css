@@ -1,3 +1,7 @@
 .MyAccount {
     background-color: grey; 
 }
+
+.YesNoQuestion {
+    display: inline;
+}
