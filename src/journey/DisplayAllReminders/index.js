@@ -21,11 +21,14 @@ const DisplayAllReminders = ({ onReminderClick }) => {
     }]
 
     return (
-        <ul className={styles.ListOfReminders}>
-            {reminders.map((todo, index) => (
-                <Reminder key={index} {...todo} onClick={() => onReminderClick(index)} />
-            ))}
-        </ul>
+        <div className={styles.ListOfReminders}>
+            {reminders.length ?  
+            <ul>
+                {reminders.map((todo, index) => (
+                    <Reminder key={index} {...todo} onClick={() => onReminderClick(index)} />
+                    ))}
+            </ul> : <span>You have no reminders to display.</span> }
+        </div>
     )
 }
 
