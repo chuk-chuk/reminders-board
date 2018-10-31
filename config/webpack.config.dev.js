@@ -26,10 +26,10 @@ const publicUrl = '';
 const env = getClientEnvironment(publicUrl);
 
 // style files regexes
-const cssRegex = /\.css$/;
-const cssModuleRegex = /\.module\.css$/;
-const sassRegex = /\.(scss|sass)$/;
-const sassModuleRegex = /\.module\.(scss|sass)$/;
+//const cssRegex = /\.css$/;
+const cssModuleRegex = /\.css$/;
+//const sassRegex = /\.(scss|sass)$/;
+const sassModuleRegex = /\.(scss|sass)$/;
 
 // common function to get style loaders
 const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -264,13 +264,13 @@ module.exports = {
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
           // By default we support CSS Modules with the extension .module.css
-          {
-            test: cssRegex,
-            exclude: cssModuleRegex,
-            use: getStyleLoaders({
-              importLoaders: 1,
-            }),
-          },
+          // {
+          //   test: cssRegex,
+          //   exclude: cssModuleRegex,
+          //   use: getStyleLoaders({
+          //     importLoaders: 1,
+          //   }),
+          // },
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
           // using the extension .module.css
           {
@@ -286,11 +286,11 @@ module.exports = {
           // to immediately apply all styles to the DOM.
           // By default we support SASS Modules with the
           // extensions .module.scss or .module.sass
-          {
-            test: sassRegex,
-            exclude: sassModuleRegex,
-            use: getStyleLoaders({ importLoaders: 2 }, 'sass-loader'),
-          },
+          // {
+          //   test: sassRegex,
+          //   exclude: sassModuleRegex,
+          //   use: getStyleLoaders({ importLoaders: 2 }, 'sass-loader'),
+          // },
           // Adds support for CSS Modules, but using SASS
           // using the extension .module.scss or .module.sass
           {

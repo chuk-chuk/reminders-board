@@ -1,15 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './styles.css';
+import styles from './styles.scss';
 
 const Footer = () => {
+    console.log(styles);
+
   return (
-      <footer className={styles.Footer} aria-label="main footer">
-          <div className={styles['Footer__content']}>
-              Footer to be moved to the bottom of the page pls!
-          </div>
-      </footer>
+    <footer>
+        <div className={styles.Copyright}>
+            <p>@ pumpkin design studio</p>
+        </div>
+
+        <div className={styles.Social}>
+            <a href="#" className={styles.Support}>yulia@yulia.co.uk</a>
+            <a href="#" className={styles.Face}>f</a>
+            <a href="#" className={styles.Tweet}>t</a>
+            <a href="#" className={styles.Linked}>in</a>
+        </div>
+    </footer>
   );
 };
 
