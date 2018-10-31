@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Reminder from '../../components/Reminder';
 
-import styles from './styles.css';
+import styles from './styles.scss';
 
 const DisplayAllReminders = ({ onReminderClick }) => {
 

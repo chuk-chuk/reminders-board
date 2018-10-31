@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Button from '../Button';
 
 
-import styles from './styles.css';
+import styles from './styles.scss';
 
 class LoginForm extends Component {
     constructor() {

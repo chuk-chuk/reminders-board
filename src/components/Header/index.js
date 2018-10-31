@@ -2,7 +2,7 @@ import React from 'react';
 
 import Logo from '../Logo';
 
-import styles from './styles.css';
+import styles from './styles.scss';
 
 const Header = () => {
   const title = 'Reminder Board Header';

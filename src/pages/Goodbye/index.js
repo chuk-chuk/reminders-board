@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import styles from './styles.css';
+import styles from './styles.scss';
 
 class Goodbye extends Component {
     render() {

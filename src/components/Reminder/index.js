@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from '../Button';
 
-import styles from './styles.css';
+import styles from './styles.scss';
 
 const Reminder = ({ text, expiredBy, onClick }) => {
     return (

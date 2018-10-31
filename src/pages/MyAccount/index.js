@@ -5,7 +5,7 @@ import Button from '../../components/Button';
 import Header from '../../components/Header';
 import DisplayAllReminders from '../../journey/DisplayAllReminders';
 
-import styles from './styles.css';
+import styles from './styles.scss';
 
 class MyAccount extends Component {
     constructor() {
