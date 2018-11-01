@@ -10,8 +10,8 @@ class LoginForm extends Component {
     constructor() {
         super();
         this.state = {
-            email: 'tea@tearoom.com',
-            password: '123456', 
+            email: '',
+            password: '', 
             error: ''
         }
 
@@ -46,11 +46,10 @@ class LoginForm extends Component {
         return (
             <div className={styles.LoginForm}>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Email</label>
-                    <input type="email" data-test="email" value={this.state.email} onChange={this.handleEmailChange} />
+                   
+                    <input type="email" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange} />
 
-                    <label>Password</label>
-                    <input type="password" data-test="password" value={this.state.password} onChange={this.handlePasswordChange} />
+                    <input type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
 
                     <button type="submit">Log In</button>
                 </form>

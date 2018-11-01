@@ -5,7 +5,7 @@ import styles from './styles.scss';
 
 const Button = ({ id, onClick, label }) => {
     return (
-        <button 
+        <button className={styles.Btn}
             id={id} 
             className={styles.Button} 
             onClick={onClick}>
