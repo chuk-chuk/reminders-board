@@ -21,6 +21,7 @@ class LoginForm extends Component {
     }
 
     handleSubmit(e) {
+        //dispatch an action
         e.preventDefault();
         this.props.history.push('/account');
         
@@ -45,6 +46,7 @@ class LoginForm extends Component {
     render() {
         return (
             <div className={styles.LoginForm}>
+
                 <form onSubmit={this.handleSubmit}>
                    
                     <input type="email" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange} />

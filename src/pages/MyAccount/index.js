@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import Button from '../../components/Button';
 import Header from '../../components/Header';
+import Button from '../../components/Button';
 import DisplayAllReminders from '../../journey/DisplayAllReminders';
 
 import styles from './styles.scss';
@@ -11,12 +11,11 @@ class MyAccount extends Component {
     constructor() {
         super();
 
-    this.handleLogOut = this.handleLogOut.bind(this);
+    this.handleCollapsibleForm = this.handleCollapsibleForm.bind(this);
     }
 
-    handleLogOut(e) {
-        e.preventDefault();
-        this.props.history.push('/goodbye');
+    handleCollapsibleForm() {
+        return false;
     }
 
     render() {
@@ -25,8 +24,6 @@ class MyAccount extends Component {
             <div className={styles.MyAccount}>
             
             <Header/>
-
-                <Button id='logOutButton' label='Log Out' onClick={this.handleLogOut}/>
                 
                 <div className={styles.YesNoQuestion}>
                     <h2>

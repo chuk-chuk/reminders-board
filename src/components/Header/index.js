@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import Logo from '../Logo';
+import Button from '../Button';
 
 import styles from './styles.scss';
 
-const Header = () => {
-  const title = 'Reminder Board Header';
+class Header extends Component {
+    constructor() {
+        super();
 
-  return (
-      <header className={styles.Header} aria-label="main header">
+    this.handleLogOut = this.handleLogOut.bind(this);
+    }
+
+    handleLogOut(e) {
+        e.preventDefault();
+        this.props.history.push('/goodbye');
+    }
+
+    render() {
+        const title = 'Reminder Board Header';
+
+        return (
+            <header className={styles.Header} aria-label="main header">
           <div className={styles.Header__logo}>
               <Logo />
           </div>
@@ -16,8 +30,12 @@ const Header = () => {
           <div className={styles.Header__title}>
               {title}
           </div>
-      </header>
-  );
-};
+        
+          <Button id='logOutButton' label='Log Out' onClick={this.handleLogOut}/>
 
-export default Header;
+      </header>
+        );
+    };
+}
+
+export default withRouter(Header);
