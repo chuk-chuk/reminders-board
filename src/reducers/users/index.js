@@ -3,7 +3,7 @@
 export const LOGIN_USER = 'LOGIN_USER';
 export const SIGNUP_USER = 'SIGNUP_USER';
 
-export const logInUser = () => {
+export const loginUserSuccess = () => {
     return {
         type: LOGIN_USER
     };

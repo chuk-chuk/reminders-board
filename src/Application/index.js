@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Loader from '../components/Loader';
 import Footer from '../components/Footer';
+
+import * as actions from '../reducers/users/actions';
+
 class ReminderApp extends Component {
+    
   constructor() {
     super();
+    
     this.state = {
       loading: true
     }
@@ -35,7 +42,13 @@ class ReminderApp extends Component {
 }
 
 ReminderApp.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  actions: PropTypes.objectOf(PropTypes.func).isRequired
 };
 
-export default ReminderApp;
+export default connect(
+  state => ({}),
+  dispatch => ({
+    actions: bindActionCreators(actions, dispatch)
+  })
+)(ReminderApp);

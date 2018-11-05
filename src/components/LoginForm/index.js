@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Button from '../Button';
 
 
 import styles from './styles.scss';
+import { authUser } from '../../reducers/users/actions';
+import * as actions from '../../reducers/users/actions';
 
 class LoginForm extends Component {
+    
     constructor() {
         super();
+
         this.state = {
             email: '',
             password: '', 
@@ -20,10 +26,20 @@ class LoginForm extends Component {
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
+        if (nextProps.loggedIn) {
+            this.props.history.push('/account');
+        }
+    }
+
     handleSubmit(e) {
-        //dispatch an action
         e.preventDefault();
-        this.props.history.push('/account');
+        console.log(this.props)
+        this.props.actions.authUser(this.state.email, this.state.password);
+        // dispatch(authUser(this.state.email, this.state.password));
+        
+        //this.props.history.push('/account');
         
         if(!this.state.email) {
             return this.setState({ error: 'User email is required'})
@@ -63,4 +79,13 @@ class LoginForm extends Component {
     }
 }
 
-export default withRouter(LoginForm);
+export default connect(
+    (state) => {
+        return {
+            loggedIn: state.loggedIn
+        }
+    },
+    dispatch => ({
+      actions: bindActionCreators(actions, dispatch)
+    })
+  )(withRouter(LoginForm));

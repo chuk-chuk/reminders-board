@@ -1,14 +1,11 @@
 .Application {
     background-color: rebeccapurple;
-}
-
-img {
-    height: 200px;
+    min-height: 765px;
 }
 
 .Application__header {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
 }
 
 p {
