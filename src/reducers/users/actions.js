@@ -1,7 +1,7 @@
 import { loginUserError, initializeUserLogin } from '../requests';
-import { loginUserSuccess } from '../users';
+import { loginUserSuccess, signupUserSuccess,logoutUserSuccess } from '../users';
 
-export const authUser = (email, password) => {
+export const loginUser = (email, password) => {
     return dispatch => {
 
         const loginPayload = {
@@ -9,11 +9,11 @@ export const authUser = (email, password) => {
             password
         };
 
-        const url = 'http://localhost:8080/users';
+        const loginUrl = 'http://localhost:8080/authenticate';
 
         dispatch(initializeUserLogin());
 
-        return fetch(url, {
+        return fetch(loginUrl, {
             method: 'POST', 
             headers: {
                 Accept: 'application/json',
@@ -27,7 +27,7 @@ export const authUser = (email, password) => {
                 console.log(res)
                 res.json().then(data => {
                     dispatch(loginUserSuccess());
-                    //dispatch(loginUserState(data));
+                    console.log(data);
                     return true;
                 })
             } else {
@@ -39,5 +39,52 @@ export const authUser = (email, password) => {
             dispatch(loginUserError());
             return false;
         })
+    }
+}
+
+export const signupUser = (email, password) => {
+    return dispatch => {
+        const signupPayload = {
+            email,
+            password
+        };
+
+        const signupUrl = 'http://localhost:8080/users';
+
+        dispatch(initializeUserLogin());
+
+        return fetch(signupUrl, {
+            method: 'POST', 
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(signupPayload)
+            
+        })
+        .then(res => {
+            if (res.status === 200) {
+                console.log(res)
+                res.json().then(data => {
+                    dispatch(signupUserSuccess());
+                    console.log(data);
+                    return true;
+                })
+            } else {
+                dispatch(loginUserError());
+                return false;
+            }
+        })
+        .catch(() => {
+            dispatch(loginUserError());
+            return false;
+        })
+    }
+}
+
+export const logoutUser = () => {
+    return dispatch => {
+        dispatch(logoutUserSuccess());
+        return true;
     }
 }

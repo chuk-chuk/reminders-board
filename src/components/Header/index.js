@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Logo from '../Logo';
 import Button from '../Button';
+
+import * as actions from '../../reducers/users/actions';
 
 import styles from './styles.scss';
 
@@ -15,7 +19,8 @@ class Header extends Component {
 
     handleLogOut(e) {
         e.preventDefault();
-        this.props.history.push('/goodbye');
+        this.props.actions.logoutUser();
+        this.props.history.push('/');
     }
 
     render() {
@@ -38,4 +43,13 @@ class Header extends Component {
     };
 }
 
-export default withRouter(Header);
+export default connect(
+    (state) => {
+        return {
+            loggedIn: state.users.loggedIn
+        }
+    },
+    dispatch => ({
+      actions: bindActionCreators(actions, dispatch)
+    })
+  )(withRouter(Header));

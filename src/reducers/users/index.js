@@ -1,6 +1,7 @@
 // Actions creator.
 
 export const LOGIN_USER = 'LOGIN_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
 export const SIGNUP_USER = 'SIGNUP_USER';
 
 export const loginUserSuccess = () => {
@@ -9,7 +10,13 @@ export const loginUserSuccess = () => {
     };
 };
 
-export const signUpUser = () => {
+export const logoutUserSuccess = () => {
+    return {
+        type: LOGOUT_USER
+    };
+};
+
+export const signupUserSuccess = () => {
     return {
         type: SIGNUP_USER
     };
@@ -27,6 +34,13 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loggedIn: true
+            };
+        }
+
+        case LOGOUT_USER: {
+            return {
+                ...state,
+                loggedIn: false
             };
         }
 

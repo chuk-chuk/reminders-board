@@ -5,9 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import Button from '../Button';
 
-
 import styles from './styles.scss';
-import { authUser } from '../../reducers/users/actions';
 import * as actions from '../../reducers/users/actions';
 
 class LoginForm extends Component {
@@ -21,25 +19,38 @@ class LoginForm extends Component {
             error: ''
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleSignup = this.handleSignup.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
+        console.log('nextProps', nextProps)
         if (nextProps.loggedIn) {
             this.props.history.push('/account');
         }
     }
 
-    handleSubmit(e) {
+    handleLogin(e) {
         e.preventDefault();
-        console.log(this.props)
-        this.props.actions.authUser(this.state.email, this.state.password);
-        // dispatch(authUser(this.state.email, this.state.password));
+        console.log('handleLogin', this.props)
+        this.props.actions.loginUser(this.state.email, this.state.password);
         
-        //this.props.history.push('/account');
+        if(!this.state.email) {
+            return this.setState({ error: 'User email is required'})
+        }
+        if(!this.state.password) {
+            return this.setState({ error: 'User password is required'})
+        }
+
+        return this.setState({ error: '' });
+    }
+
+    handleSignup(e) {
+        e.preventDefault();
+        console.log('handleSignup', this.props);
+        this.props.actions.signupUser(this.state.email, this.state.password);
         
         if(!this.state.email) {
             return this.setState({ error: 'User email is required'})
@@ -63,7 +74,7 @@ class LoginForm extends Component {
         return (
             <div className={styles.LoginForm}>
 
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleLogin}>
                    
                     <input type="email" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange} />
 
@@ -72,7 +83,7 @@ class LoginForm extends Component {
                     <button type="submit">Log In</button>
                 </form>
 
-                <Button id='signUpButton' label="Sign Up" onClick={this.handleSignUp}/>
+                <Button id='signUpButton' label="Sign Up" onClick={this.handleSignup}/>
 
             </div>
         )
@@ -82,7 +93,7 @@ class LoginForm extends Component {
 export default connect(
     (state) => {
         return {
-            loggedIn: state.loggedIn
+            loggedIn: state.users.loggedIn
         }
     },
     dispatch => ({
